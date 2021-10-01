@@ -1,0 +1,82 @@
+{
+    "pages":[
+        {
+            "name":"page1",
+            "elements":[
+                {
+                    "type":"rating",
+                    "name":"question1",
+                    "title":"Default"
+                },
+                {
+                    "type":"rating",
+                    "name":"question3",
+                    "title":"Min 2",
+                    "rateMin":2
+                },
+                {
+                    "type":"rating",
+                    "name":"question2",
+                    "title":"Max 10",
+                    "rateMax":10
+                },
+                {
+                    "type":"rating",
+                    "name":"question4",
+                    "title":"Step 2, Max 11",
+                    "rateMax":11,
+                    "rateStep":2
+                },
+                {
+                    "type":"rating",
+                    "name":"question5",
+                    "title":"Custom values",
+                    "rateValues":[
+                        {
+                            "value":"item1",
+                            "text":"Bad"
+                        },
+                        {
+                            "value":"item2",
+                            "text":"OK"
+                        },
+                        "Good"
+                    ],
+                    "rateMax":11,
+                    "rateStep":2
+                }
+            ]
+        },
+        {
+            "name":"page2",
+            "elements":[
+                {
+                    "type":"rating",
+                    "name":"question6",
+                    "title":"Custom values including numbers and description",
+                    "description":"An example of a description",
+                    "rateValues":[
+                        {
+                            "value":"item1",
+                            "text":"1"
+                        },
+                        {
+                            "value":"item2",
+                            "text":"2"
+                        },
+                        {
+                            "value":"item3",
+                            "text":"OK"
+                        },
+                        "4",
+                        "5"
+                    ],
+                    "minRateDescription":"min",
+                    "maxRateDescription":"max"
+                }
+            ],
+            "title":"PAGE 2",
+            "description":"Page 2 descrp"
+        }
+    ]
+}

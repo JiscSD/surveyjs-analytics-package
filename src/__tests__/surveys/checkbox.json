@@ -1,0 +1,63 @@
+{
+    "pages":[
+        {
+            "name":"page1",
+            "elements":[
+                {
+                    "type":"checkbox",
+                    "name":"question1",
+                    "choices":[
+                        "item1",
+                        "item2",
+                        "item3"
+                    ]
+                },
+                {
+                    "type":"checkbox",
+                    "name":"question2",
+                    "title":"Question 2",
+                    "choices":[
+                        {
+                            "value":"item1",
+                            "text":"Item 1"
+                        },
+                        {
+                            "value":"item2",
+                            "text":"Item 2"
+                        },
+                        {
+                            "value":"item3",
+                            "text":"Item 3"
+                        }
+                    ]
+                },
+                {
+                    "type":"checkbox",
+                    "name":"question3",
+                    "title":"Q3",
+                    "description":"Q3 Description",
+                    "choices":[
+                        "A",
+                        {
+                            "value":"B",
+                            "text":"OK"
+                        },
+                        "C"
+                    ]
+                },
+                {
+                    "type":"checkbox",
+                    "name":"question4",
+                    "choices":[
+                        "item1",
+                        "item2",
+                        "item3"
+                    ],
+                    "hasOther":true,
+                    "hasNone":true,
+                    "otherText":"Other TEXT"
+                }
+            ]
+        }
+    ]
+}

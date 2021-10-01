@@ -1,0 +1,23 @@
+{
+    "pages":[
+        {
+            "name":"page1",
+            "elements":[
+                {
+                    "type":"comment",
+                    "name":"question1"
+                },
+                {
+                    "type":"comment",
+                    "name":"question2",
+                    "title":"Question 2"
+                },
+                {
+                    "type":"comment",
+                    "name":"question3",
+                    "description":"Description for Q3"
+                }
+            ]
+        }
+    ]
+}
