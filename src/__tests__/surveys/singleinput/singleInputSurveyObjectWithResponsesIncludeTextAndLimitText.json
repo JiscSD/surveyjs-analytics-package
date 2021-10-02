@@ -1,0 +1,70 @@
+{
+    "question1":{
+        "type":"text",
+        "name":"question1",
+        "description":null,
+        "title":"question1",
+        "pageName":"page1",
+        "pageTitle":"page1",
+        "pageIndex":0,
+        "pageDescription":null,
+        "isQuestion":true,
+        "aggregateTotal":3,
+        "inputMask":null,
+        "inputType":null,
+        "values":[
+            "r1-q1"
+        ]
+    },
+    "question2":{
+        "type":"text",
+        "name":"question2",
+        "description":null,
+        "title":"Question 2",
+        "pageName":"page2",
+        "pageTitle":"Page 2",
+        "pageIndex":1,
+        "pageDescription":null,
+        "isQuestion":true,
+        "aggregateTotal":2,
+        "inputMask":null,
+        "inputType":null,
+        "values":[
+            "r1-q2"
+        ]
+    },
+    "question3":{
+        "type":"text",
+        "name":"question3",
+        "description":"Question 3",
+        "title":"Question 3",
+        "pageName":"page3",
+        "pageTitle":"page3",
+        "pageIndex":2,
+        "pageDescription":"Page 3 Description",
+        "isQuestion":true,
+        "aggregateTotal":3,
+        "inputMask":null,
+        "inputType":null,
+        "values":[
+            "r1-q3"
+        ]
+    },
+    "question4":{
+        "type":"text",
+        "name":"question4",
+        "description":null,
+        "title":"Mask",
+        "pageName":"page4",
+        "pageTitle":"page4",
+        "pageIndex":3,
+        "pageDescription":null,
+        "isQuestion":true,
+        "aggregateTotal":2,
+        "inputMask":"currency",
+        "inputType":null,
+        "values":[
+            "r1-q4"
+        ]
+    }
+}

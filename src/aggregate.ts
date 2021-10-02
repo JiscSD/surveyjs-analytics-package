@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 interface Response {
     [key: string]: any;
 };
@@ -21,6 +23,28 @@ interface AggregateOptions {
     includeText?: boolean;
     limitText?: number;
 };
+
+// interface QuestionObject {
+//     type: string;
+//     name: string;
+//     description: string | null;
+//     title: string | null;
+//     pageName: string;
+//     pageTitle: string;
+//     pageIndex: number;
+//     pageDescription: string | null;
+//     isQuestion: boolean;
+//     aggregateTotal: number;
+//     hasOther?: boolean;
+//     hasNone?: boolean;
+//     otherText?: string | null;
+//     noneText?: string | null;
+//     values: any;
+// };
+
+// interface SurveyObject {
+//     [questionName: string]: QuestionObject;
+// };
 
 enum QuestionType {
     SingleInput = 'text',
@@ -115,12 +139,12 @@ export const generateAggregateSurveyObject = (options: AggregateOptions): any =>
                     surveyObject[surveyQuestion.name].rateMin = rateMin;
 
                     surveyObject[surveyQuestion.name].values = {};
-                    
+
                     if (rateValues) {
                         rateValues.forEach((rate, rateIndex) => {
                             const rateValue = typeof rate === 'string' ? rate : rate.value;
                             const rateText = typeof rate === 'string' ? rate : rate.text;
-    
+
                             surveyObject[surveyQuestion.name].values[rateValue] = {
                                 text: rateText,
                                 value: rateValue,
@@ -166,15 +190,14 @@ export const generateAggregateSurveyObject = (options: AggregateOptions): any =>
             }
         });
     });
-    
+
     return surveyObject;
 };
 
 export const populateAggregateSurveyObject = (aggregateSurveyObject: any, options: AggregateOptions) => {
-    const aggregateSurveyObjectClone = { ...aggregateSurveyObject };
-    const optionsClone = {...options};
+    const aggregateSurveyObjectClone = _.cloneDeep(aggregateSurveyObject);
 
-    optionsClone.responses.forEach((responseObject) => {
+    options.responses.forEach((responseObject) => {
         Object.entries(aggregateSurveyObjectClone).forEach(([questionName, questionProperties]: any) => {
             const response = responseObject.response[questionName];
             if (!response) {
@@ -195,7 +218,7 @@ export const populateAggregateSurveyObject = (aggregateSurveyObject: any, option
                     response.forEach((value) => {
                         aggregateSurveyObjectClone[questionName].values[value].raw++;
                         if (value === 'other' && options.includeText) {
-                            if(options.limitText && aggregateSurveyObjectClone[questionName].values[value].responses.length <= options.limitText) {
+                            if (options.limitText && aggregateSurveyObjectClone[questionName].values[value].responses.length <= options.limitText) {
                                 aggregateSurveyObjectClone[questionName].values[value].responses.push(responseObject.response[`${questionName}-Comment`]);
                             }
                         }

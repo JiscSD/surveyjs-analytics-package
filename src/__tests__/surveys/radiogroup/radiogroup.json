@@ -1,65 +1,65 @@
 {
-    "pages":[
+    "pages": [
         {
-            "name":"page1",
-            "elements":[
+            "name": "page1",
+            "elements": [
                 {
-                    "type":"radiogroup",
-                    "name":"question1",
-                    "choices":[
+                    "type": "radiogroup",
+                    "name": "question1",
+                    "choices": [
                         "item1",
                         "item2",
                         "item3"
                     ]
                 },
                 {
-                    "type":"radiogroup",
-                    "name":"question2",
-                    "title":"Question 2",
-                    "choices":[
+                    "type": "radiogroup",
+                    "name": "question2",
+                    "title": "Question 2",
+                    "choices": [
                         {
-                            "value":"item1",
-                            "text":"BAD"
+                            "value": "item1",
+                            "text": "BAD"
                         },
                         {
-                            "value":"item2",
-                            "text":"OK"
+                            "value": "item2",
+                            "text": "OK"
                         },
                         {
-                            "value":"item3",
-                            "text":"GOOD"
+                            "value": "item3",
+                            "text": "GOOD"
                         }
                     ]
                 },
                 {
-                    "type":"radiogroup",
-                    "name":"question3",
-                    "title":"Question 3",
-                    "description":"Q3 Description",
-                    "choices":[
+                    "type": "radiogroup",
+                    "name": "question3",
+                    "title": "Question 3",
+                    "description": "Q3 Description",
+                    "choices": [
                         {
-                            "value":"item1",
-                            "text":"Bad"
+                            "value": "item1",
+                            "text": "Bad"
                         },
                         "OK",
                         {
-                            "value":"item3",
-                            "text":"Good"
+                            "value": "item3",
+                            "text": "Good"
                         }
                     ]
                 },
                 {
-                    "type":"radiogroup",
-                    "name":"question4",
-                    "choices":[
+                    "type": "radiogroup",
+                    "name": "question4",
+                    "choices": [
                         "item1",
                         "item2",
                         "item3"
                     ],
-                    "hasOther":true,
-                    "hasNone":true,
-                    "noneText":"NONE",
-                    "otherText":"OTHER"
+                    "hasOther": true,
+                    "hasNone": true,
+                    "noneText": "NONE",
+                    "otherText": "OTHER"
                 }
             ]
         }

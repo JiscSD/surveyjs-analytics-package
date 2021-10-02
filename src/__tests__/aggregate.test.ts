@@ -3,8 +3,12 @@ import * as aggregateAnalaytics from '../aggregate';
 import ratingSurvey from './surveys/rating.json';
 import ratingSurveyObject from './surveys/ratingSurveyObject.json';
 
-import SingleInputSurvey from './surveys/singleInput.json';
-import SingleInputSurveyObject from './surveys/singleInputSurveyObject.json';
+import SingleInputSurvey from './surveys/singleinput/singleInput.json';
+import SingleInputResponses from './surveys/singleinput/singleInputResponses.json';
+import SingleInputSurveyObjectPlain from './surveys/singleinput/singleInputSurveyObjectPlain.json';
+import SingleInputSurveyObjectWithResponses from './surveys/singleinput/singleInputSurveyObjectWithResponses.json';
+import SingleInputSurveyObjectWithResponsesIncludeText from './surveys/singleinput/singleInputSurveyObjectWithResponsesIncludeText.json';
+import SingleInputSurveyObjectWithResponsesIncludeTextAndLimitText from './surveys/singleinput/singleInputSurveyObjectWithResponsesIncludeTextAndLimitText.json';
 
 import MultilineInputSurvey from './surveys/multilineInput.json';
 import MultilineInputSurveyObject from './surveys/multilineInputSurveyObject.json';
@@ -23,7 +27,7 @@ import MatrixSingleChoiceSurvey from './surveys/matrixSingleChoice.json';
 import MatrixSingleChoiceSurveyObject from './surveys/matrixSingleChoiceSurveyObject.json';
 
 
-describe.skip('generateAggregateSurveyObject', () => {
+describe('generateAggregateSurveyObject', () => {
     test('Rating Survey', () => {
         const surveyObject = aggregateAnalaytics.generateAggregateSurveyObject({
             survey: ratingSurvey,
@@ -38,7 +42,7 @@ describe.skip('generateAggregateSurveyObject', () => {
             responses: []
         });
 
-        expect(surveyObject).toEqual(SingleInputSurveyObject);
+        expect(surveyObject).toEqual(SingleInputSurveyObjectPlain);
     });
     test('MultilineInput Survey', () => {
         const surveyObject = aggregateAnalaytics.generateAggregateSurveyObject({
@@ -75,16 +79,42 @@ describe.skip('generateAggregateSurveyObject', () => {
 });
 
 describe('populateAggregateSurveyObject', () => {
+    describe('Single Input', () => {
+        test('No extra options', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(SingleInputSurveyObjectPlain, {
+                survey: SingleInputSurvey,
+                responses: SingleInputResponses
+            });
+            expect(surveyObject).toEqual(SingleInputSurveyObjectWithResponses);
+        });
+        test('options.includeText = true', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(SingleInputSurveyObjectPlain, {
+                survey: SingleInputSurvey,
+                responses: SingleInputResponses,
+                includeText: true
+            });
+            expect(surveyObject).toEqual(SingleInputSurveyObjectWithResponsesIncludeText);
+        });
+        test('options.includeText = true && options.limitText = 1', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(SingleInputSurveyObjectPlain, {
+                survey: SingleInputSurvey,
+                responses: SingleInputResponses,
+                includeText: true,
+                limitText: 1
+            });
+
+            expect(surveyObject).toEqual(SingleInputSurveyObjectWithResponsesIncludeTextAndLimitText);
+        });
+    });
     describe('Radiogroup', () => {
         test('No extra options', () => {
             const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(RadiogroupSurveyObjectPlain, {
                 survey: RadiogroupSurvey,
                 responses: RadioGroupResponses
             });
-            
             expect(surveyObject).toEqual(RadiogroupSurveyObjectWithResponses);
         });
-        test.skip('options.includeText = true', () => {
+        test('options.includeText = true', () => {
             const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(RadiogroupSurveyObjectPlain, {
                 survey: RadiogroupSurvey,
                 responses: RadioGroupResponses,
@@ -102,5 +132,5 @@ describe('populateAggregateSurveyObject', () => {
 
             expect(surveyObject).toEqual(RadiogroupSurveyObjectWithResponsesIncludeTextAndLimitText);
         });
-    })
+    });
 });
