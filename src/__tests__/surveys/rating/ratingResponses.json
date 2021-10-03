@@ -16,7 +16,13 @@
             "question2": 4,
             "question4": 11,
             "question5": "Good",
-            "question6": 4
+            "question6": 4,
+            "question10": "does not exist, so should not affect anything"
+        }
+    },
+    {
+        "response": {
+            "question1": "invalid_response_not_counted"
         }
     }
 ]

@@ -225,6 +225,9 @@ export const populateAggregateSurveyObject = (aggregateSurveyObject: any, option
                     });
                     break;
                 case QuestionType.RadioGroup:
+                    if (!aggregateSurveyObjectClone[questionName].values[response]) {
+                        break;
+                    }
                     aggregateSurveyObjectClone[questionName].aggregateTotal++;
                     aggregateSurveyObjectClone[questionName].values[response].raw++;
                     if (response === 'other' && options.includeText) {
@@ -234,6 +237,9 @@ export const populateAggregateSurveyObject = (aggregateSurveyObject: any, option
                     }
                     break;
                 case QuestionType.Rating:
+                    if (!aggregateSurveyObjectClone[questionName].values[response]) {
+                        break;
+                    }
                     aggregateSurveyObjectClone[questionName].aggregateTotal++;
                     aggregateSurveyObjectClone[questionName].values[response].raw++;
                     break;

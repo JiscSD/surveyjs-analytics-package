@@ -17,6 +17,7 @@
     },
     {
         "response": {
+            "question3": "invalid_response_type",
             "question4": "other",
             "question4-Comment": "asdasd"
         }
@@ -25,7 +26,8 @@
         "response": {
             "question1": "item3",
             "question2": "item3",
-            "question3": "item3"
+            "question3": "item3",
+            "question10": "does not exist"
         }
     },
     {
