@@ -225,6 +225,7 @@ export const populateAggregateSurveyObject = (aggregateSurveyObject: any, option
                     });
                     break;
                 case QuestionType.RadioGroup:
+                    aggregateSurveyObjectClone[questionName].aggregateTotal++;
                     aggregateSurveyObjectClone[questionName].values[response].raw++;
                     if (response === 'other' && options.includeText) {
                         if (!options.limitText || aggregateSurveyObjectClone[questionName].values[response].responses.length <= options.limitText - 1) {
@@ -233,6 +234,7 @@ export const populateAggregateSurveyObject = (aggregateSurveyObject: any, option
                     }
                     break;
                 case QuestionType.Rating:
+                    aggregateSurveyObjectClone[questionName].aggregateTotal++;
                     aggregateSurveyObjectClone[questionName].values[response].raw++;
                     break;
                 case QuestionType.MatrixSingleChoice:

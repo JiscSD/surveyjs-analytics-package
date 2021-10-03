@@ -1,7 +1,9 @@
 import * as aggregateAnalaytics from '../aggregate';
 
-import ratingSurvey from './surveys/rating.json';
-import ratingSurveyObject from './surveys/ratingSurveyObject.json';
+import ratingSurvey from './surveys/rating/rating.json';
+import ratingResponses from './surveys/rating/ratingResponses.json';
+import ratingSurveyObjectPlain from './surveys/rating/ratingSurveyObjectPlain.json';
+import ratingSurveyObjectWithResponses from './surveys/rating/ratingSurveyObjectWithResponses.json';
 
 import SingleInputSurvey from './surveys/singleinput/singleInput.json';
 import SingleInputResponses from './surveys/singleinput/singleInputResponses.json';
@@ -38,7 +40,7 @@ describe('generateAggregateSurveyObject', () => {
             responses: []
         });
 
-        expect(surveyObject).toEqual(ratingSurveyObject);
+        expect(surveyObject).toEqual(ratingSurveyObjectPlain);
     });
     test('SingleInput Survey', () => {
         const surveyObject = aggregateAnalaytics.generateAggregateSurveyObject({
@@ -135,6 +137,32 @@ describe('populateAggregateSurveyObject', () => {
             });
 
             expect(surveyObject).toEqual(MultilineInputSurveyObjectWithResponsesIncludeTextAndLimitText);
+        });
+    });
+    describe('Rating', () => {
+        test('No extra options', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(ratingSurveyObjectPlain, {
+                survey: ratingSurvey,
+                responses: ratingResponses
+            });
+            expect(surveyObject).toEqual(ratingSurveyObjectWithResponses);
+        });
+        test('options.includeText = true', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(ratingSurveyObjectPlain, {
+                survey: ratingSurvey,
+                responses: ratingResponses,
+                includeText: true
+            });
+            expect(surveyObject).toEqual(ratingSurveyObjectWithResponses);
+        });
+        test('options.includeText = true && options.limitText = 1', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(ratingSurveyObjectPlain, {
+                survey: ratingSurvey,
+                responses: ratingResponses,
+                includeText: true,
+                limitText: 1
+            });
+            expect(surveyObject).toEqual(ratingSurveyObjectWithResponses);
         });
     });
     describe('Radiogroup', () => {
