@@ -10,8 +10,12 @@ import SingleInputSurveyObjectWithResponses from './surveys/singleinput/singleIn
 import SingleInputSurveyObjectWithResponsesIncludeText from './surveys/singleinput/singleInputSurveyObjectWithResponsesIncludeText.json';
 import SingleInputSurveyObjectWithResponsesIncludeTextAndLimitText from './surveys/singleinput/singleInputSurveyObjectWithResponsesIncludeTextAndLimitText.json';
 
-import MultilineInputSurvey from './surveys/multilineInput.json';
-import MultilineInputSurveyObject from './surveys/multilineInputSurveyObject.json';
+import MultilineInputSurvey from './surveys/multilineinput/multilineInput.json';
+import MultilineInputResponses from './surveys/multilineinput/multiLineInputResponses.json';
+import MultilineInputSurveyObjectPlain from './surveys/multilineinput/multilineInputSurveyObjectPlain.json';
+import MultilineInputSurveyObjectWithResponses from './surveys/multilineinput/multilineInputSurveyObjectPlainWithResponses.json';
+import MultilineInputSurveyObjectWithResponsesIncludeText from './surveys/multilineinput/multilineInputSurveyObjectPlainWithResponsesIncludeText.json';
+import MultilineInputSurveyObjectWithResponsesIncludeTextAndLimitText from './surveys/multilineinput/multilineInputSurveyObjectPlainWithResponsesIncludeTextAndLimitText.json';
 
 import RadiogroupSurvey from './surveys/radiogroup/radiogroup.json';
 import RadioGroupResponses from './surveys/radiogroup/radiogroupResponses.json';
@@ -50,7 +54,7 @@ describe('generateAggregateSurveyObject', () => {
             responses: []
         });
 
-        expect(surveyObject).toEqual(MultilineInputSurveyObject);
+        expect(surveyObject).toEqual(MultilineInputSurveyObjectPlain);
     });
     test('Radiogroup Survey', () => {
         const surveyObject = aggregateAnalaytics.generateAggregateSurveyObject({
@@ -104,6 +108,33 @@ describe('populateAggregateSurveyObject', () => {
             });
 
             expect(surveyObject).toEqual(SingleInputSurveyObjectWithResponsesIncludeTextAndLimitText);
+        });
+    });
+    describe('Multiline Input', () => {
+        test('No extra options', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(MultilineInputSurveyObjectPlain, {
+                survey: MultilineInputSurvey,
+                responses: MultilineInputResponses
+            });
+            expect(surveyObject).toEqual(MultilineInputSurveyObjectWithResponses);
+        });
+        test('options.includeText = true', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(MultilineInputSurveyObjectPlain, {
+                survey: MultilineInputSurvey,
+                responses: MultilineInputResponses,
+                includeText: true
+            });
+            expect(surveyObject).toEqual(MultilineInputSurveyObjectWithResponsesIncludeText);
+        });
+        test('options.includeText = true && options.limitText = 1', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(MultilineInputSurveyObjectPlain, {
+                survey: MultilineInputSurvey,
+                responses: MultilineInputResponses,
+                includeText: true,
+                limitText: 1
+            });
+
+            expect(surveyObject).toEqual(MultilineInputSurveyObjectWithResponsesIncludeTextAndLimitText);
         });
     });
     describe('Radiogroup', () => {
