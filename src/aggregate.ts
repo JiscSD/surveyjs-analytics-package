@@ -24,27 +24,35 @@ interface AggregateOptions {
     limitText?: number;
 };
 
-// interface QuestionObject {
-//     type: string;
-//     name: string;
-//     description: string | null;
-//     title: string | null;
-//     pageName: string;
-//     pageTitle: string;
-//     pageIndex: number;
-//     pageDescription: string | null;
-//     isQuestion: boolean;
-//     aggregateTotal: number;
-//     hasOther?: boolean;
-//     hasNone?: boolean;
-//     otherText?: string | null;
-//     noneText?: string | null;
-//     values: any;
-// };
+interface QuestionObject {
+    type: string;
+    name: string;
+    description: string | null;
+    title: string | null;
+    pageName: string;
+    pageTitle: string;
+    pageIndex: number;
+    pageDescription: string | null;
+    isQuestion: boolean;
+    aggregateTotal: number;
+    hasOther?: boolean;
+    hasNone?: boolean;
+    otherText?: string | null;
+    noneText?: string | null;
+    inputMask?: string | null;
+    inputType?: string | null;
+    maxRateDescription?: string | null;
+    minRateDescription?: string | null;
+    rateStep?: number | null;
+    rateMax?: number | null;
+    rateMin?: number | null;
+    rows?: any;
+    values?: any;
+};
 
-// interface SurveyObject {
-//     [questionName: string]: QuestionObject;
-// };
+interface SurveyObject {
+    [questionName: string]: QuestionObject;
+};
 
 enum QuestionType {
     SingleInput = 'text',
@@ -56,7 +64,7 @@ enum QuestionType {
 };
 
 export const generateAggregateSurveyObject = (options: AggregateOptions): any => {
-    const surveyObject = {};
+    const surveyObject: SurveyObject = {};
 
     options.survey.pages.forEach((surveyPage, surveyPageIndex) => {
         surveyPage.elements.forEach((surveyQuestion) => {
