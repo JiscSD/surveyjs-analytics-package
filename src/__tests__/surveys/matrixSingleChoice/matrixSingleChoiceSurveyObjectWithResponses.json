@@ -1,0 +1,183 @@
+{
+    "question1":{
+        "type":"matrix",
+        "name":"question1",
+        "description":null,
+        "title":"question1",
+        "pageName":"page1",
+        "pageTitle":"page1",
+        "pageIndex":0,
+        "pageDescription":null,
+        "isQuestion":true,
+        "aggregateTotal":3,
+        "rows":{
+            "Row 1":{
+                "text":"Row 1",
+                "value":"Row 1",
+                "aggregateTotal":3,
+                "columns":{
+                    "Column 1":{
+                        "text":"Column 1",
+                        "value":"Column 1",
+                        "raw":3,
+                        "rank":1
+                    },
+                    "Column 2":{
+                        "text":"Column 2",
+                        "value":"Column 2",
+                        "raw":0,
+                        "rank":2
+                    },
+                    "Column 3":{
+                        "text":"Column 3",
+                        "value":"Column 3",
+                        "raw":0,
+                        "rank":3
+                    }
+                }
+            },
+            "Row 2":{
+                "text":"Row 2",
+                "value":"Row 2",
+                "aggregateTotal":2,
+                "columns":{
+                    "Column 1":{
+                        "text":"Column 1",
+                        "value":"Column 1",
+                        "raw":2,
+                        "rank":1
+                    },
+                    "Column 2":{
+                        "text":"Column 2",
+                        "value":"Column 2",
+                        "raw":0,
+                        "rank":2
+                    },
+                    "Column 3":{
+                        "text":"Column 3",
+                        "value":"Column 3",
+                        "raw":0,
+                        "rank":3
+                    }
+                }
+            }
+        }
+    },
+    "question2":{
+        "type":"matrix",
+        "name":"question2",
+        "description":null,
+        "title":"question2",
+        "pageName":"page1",
+        "pageTitle":"page1",
+        "pageIndex":0,
+        "pageDescription":null,
+        "isQuestion":true,
+        "aggregateTotal":3,
+        "rows":{
+            "Row 1":{
+                "text":"ROW 1",
+                "value":"Row 1",
+                "aggregateTotal": 1,
+                "columns":{
+                    "C1":{
+                        "text":"COLUMN 1",
+                        "value":"C1",
+                        "raw":1,
+                        "rank":1
+                    }
+                }
+            },
+            "Row 2":{
+                "text":"ROW 2",
+                "value":"Row 2",
+                "aggregateTotal":1,
+                "columns":{
+                    "C1":{
+                        "text":"COLUMN 1",
+                        "value":"C1",
+                        "raw":1,
+                        "rank":1
+                    }
+                }
+            },
+            "Row 3":{
+                "text":"ROW 3",
+                "value":"Row 3",
+                "aggregateTotal":2,
+                "columns":{
+                    "C1":{
+                        "text":"COLUMN 1",
+                        "value":"C1",
+                        "raw":2,
+                        "rank":1
+                    }
+                }
+            }
+        }
+    },
+    "question3":{
+        "type":"matrix",
+        "name":"question3",
+        "description":"Q3 Descrp",
+        "title":"Q3",
+        "pageName":"page1",
+        "pageTitle":"page1",
+        "pageIndex":0,
+        "pageDescription":null,
+        "isQuestion":true,
+        "aggregateTotal":3,
+        "rows":{
+            "Row 1":{
+                "text":"Row 1",
+                "value":"Row 1",
+                "aggregateTotal":3,
+                "columns":{
+                    "Column 1":{
+                        "text":"C1",
+                        "value":"Column 1",
+                        "raw":2,
+                        "rank":1
+                    },
+                    "C2":{
+                        "text":"C2",
+                        "value":"C2",
+                        "raw":0,
+                        "rank":2
+                    },
+                    "Column 3":{
+                        "text":"C3",
+                        "value":"Column 3",
+                        "raw":1,
+                        "rank":3
+                    }
+                }
+            },
+            "Row 2":{
+                "text":"R2",
+                "value":"Row 2",
+                "aggregateTotal":2,
+                "columns":{
+                    "Column 1":{
+                        "text":"C1",
+                        "value":"Column 1",
+                        "raw":0,
+                        "rank":1
+                    },
+                    "C2":{
+                        "text":"C2",
+                        "value":"C2",
+                        "raw":1,
+                        "rank":2
+                    },
+                    "Column 3":{
+                        "text":"C3",
+                        "value":"Column 3",
+                        "raw":1,
+                        "rank":3
+                    }
+                }
+            }
+        }
+    }
+}

@@ -26,12 +26,16 @@ import RadiogroupSurveyObjectWithResponses from './surveys/radiogroup/radiogroup
 import RadiogroupSurveyObjectWithResponsesIncludeText from './surveys/radiogroup/radiogroupSurveyObjectWithResponsesIncludeText.json';
 import RadiogroupSurveyObjectWithResponsesIncludeTextAndLimitText from './surveys/radiogroup/radiogroupSurveyObjectWithResponsesIncludeTextAndLimitText.json';
 
-import CheckboxSurvey from './surveys/checkbox.json';
-import CheckboxSurveyObject from './surveys/checkboxSurveyObject.json';
+import CheckboxSurvey from './surveys/checkbox/checkbox.json';
+import CheckboxResponses from './surveys/checkbox/checkboxResponses.json';
+import CheckboxSurveyObjectPlain from './surveys/checkbox/checkboxSurveyObjectPlain.json';
+import CheckboxSurveyObjectWithResponses from './surveys/checkbox/checkboxSurveyObjectWithResponses.json';
+import CheckboxSurveyObjectWithResponsesIncludeText from './surveys/checkbox/checkboxSurveyObjectWithResponsesIncludeText.json';
 
-import MatrixSingleChoiceSurvey from './surveys/matrixSingleChoice.json';
-import MatrixSingleChoiceSurveyObject from './surveys/matrixSingleChoiceSurveyObject.json';
-
+import MatrixSingleChoiceSurvey from './surveys/matrixSingleChoice/matrixSingleChoice.json';
+import MatrixSingleChoiceResponses from './surveys/matrixSingleChoice/MatrixSingleChoiceResponses.json';
+import MatrixSingleChoiceSurveyObjectPlain from './surveys/matrixSingleChoice/matrixSingleChoiceSurveyObjectPlain.json';
+import MatrixSingleChoiceSurveyObjectWithResponses from './surveys/matrixSingleChoice/matrixSingleChoiceSurveyObjectWithResponses.json';
 
 describe('generateAggregateSurveyObject', () => {
     test('Rating Survey', () => {
@@ -72,7 +76,7 @@ describe('generateAggregateSurveyObject', () => {
             responses: []
         });
 
-        expect(surveyObject).toEqual(CheckboxSurveyObject);
+        expect(surveyObject).toEqual(CheckboxSurveyObjectPlain);
     });
     test('MatrixSingleChoice Survey', () => {
         const surveyObject = aggregateAnalaytics.generateAggregateSurveyObject({
@@ -80,7 +84,7 @@ describe('generateAggregateSurveyObject', () => {
             responses: []
         });
 
-        expect(surveyObject).toEqual(MatrixSingleChoiceSurveyObject);
+        expect(surveyObject).toEqual(MatrixSingleChoiceSurveyObjectPlain);
     });
 });
 
@@ -190,6 +194,64 @@ describe('populateAggregateSurveyObject', () => {
             });
 
             expect(surveyObject).toEqual(RadiogroupSurveyObjectWithResponsesIncludeTextAndLimitText);
+        });
+    });
+    describe('Checkbox', () => {
+        test('No extra options', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(CheckboxSurveyObjectPlain, {
+                survey: CheckboxSurvey,
+                responses: CheckboxResponses
+            });
+
+            expect(surveyObject).toEqual(CheckboxSurveyObjectWithResponses);
+        });
+        test('options.includeText = true', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(CheckboxSurveyObjectPlain, {
+                survey: CheckboxSurvey,
+                responses: CheckboxResponses,
+                includeText: true
+            });
+
+            expect(surveyObject).toEqual(CheckboxSurveyObjectWithResponsesIncludeText);
+        });
+        test('options.includeText = true && options.limitText = 1', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(CheckboxSurveyObjectPlain, {
+                survey: CheckboxSurvey,
+                responses: CheckboxResponses,
+                includeText: true,
+                limitText: 1
+            });
+
+            expect(surveyObject).toEqual(CheckboxSurveyObjectWithResponsesIncludeText);
+        });
+    });
+    describe('Matrix Single Choice', () => {
+        test('No extra options', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(MatrixSingleChoiceSurveyObjectPlain, {
+                survey: MatrixSingleChoiceSurvey,
+                responses: MatrixSingleChoiceResponses
+            });
+
+            expect(surveyObject).toEqual(MatrixSingleChoiceSurveyObjectWithResponses);
+        });
+        test('options.includeText = true', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(MatrixSingleChoiceSurveyObjectPlain, {
+                survey: MatrixSingleChoiceSurvey,
+                responses: MatrixSingleChoiceResponses,
+                includeText: true
+            });
+
+            expect(surveyObject).toEqual(MatrixSingleChoiceSurveyObjectWithResponses);
+        });
+        test('options.includeText = true && options.limitText = 1', () => {
+            const surveyObject = aggregateAnalaytics.populateAggregateSurveyObject(MatrixSingleChoiceSurveyObjectPlain, {
+                survey: MatrixSingleChoiceSurvey,
+                responses: MatrixSingleChoiceResponses,
+                includeText: true,
+                limitText: 1
+            });
+
+            expect(surveyObject).toEqual(MatrixSingleChoiceSurveyObjectWithResponses);
         });
     });
 });

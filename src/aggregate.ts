@@ -155,7 +155,7 @@ export const generateAggregateSurveyObject = (options: AggregateOptions): any =>
                         break;
                     }
 
-                    for (let i = rateMin, index = 1; i <= rateMax; i += rateStep, index++) {
+                    for (let i = rateMin, index = 0; i <= rateMax; i += rateStep, index++) {
                         surveyObject[surveyQuestion.name].values[i] = {
                             text: i,
                             value: i,
@@ -172,7 +172,7 @@ export const generateAggregateSurveyObject = (options: AggregateOptions): any =>
                         surveyObject[surveyQuestion.name].rows[rowValue] = {
                             text: rowText,
                             value: rowValue,
-                            aggregateTotals: 0,
+                            aggregateTotal: 0,
                             columns: {}
                         };
                         surveyQuestion.columns.forEach((column, columnIndex) => {
@@ -215,10 +215,14 @@ export const populateAggregateSurveyObject = (aggregateSurveyObject: any, option
                     }
                     break;
                 case QuestionType.Checkbox:
+                    aggregateSurveyObjectClone[questionName].aggregateTotal++;
                     response.forEach((value) => {
+                        if (!aggregateSurveyObjectClone[questionName].values[value]) {
+                            return;
+                        }
                         aggregateSurveyObjectClone[questionName].values[value].raw++;
                         if (value === 'other' && options.includeText) {
-                            if (options.limitText && aggregateSurveyObjectClone[questionName].values[value].responses.length <= options.limitText) {
+                            if (!options.limitText || aggregateSurveyObjectClone[questionName].values[value].responses.length <= options.limitText - 1) {
                                 aggregateSurveyObjectClone[questionName].values[value].responses.push(responseObject.response[`${questionName}-Comment`]);
                             }
                         }
@@ -244,9 +248,13 @@ export const populateAggregateSurveyObject = (aggregateSurveyObject: any, option
                     aggregateSurveyObjectClone[questionName].values[response].raw++;
                     break;
                 case QuestionType.MatrixSingleChoice:
+                    aggregateSurveyObjectClone[questionName].aggregateTotal++;
                     Object.entries(response).forEach(([row, column]: any) => {
-                        aggregateSurveyObjectClone[questionName].rows[row].aggregateTotals++;
-                        aggregateSurveyObjectClone[questionName].rows[row].column[column].raw++;
+                        if (!aggregateSurveyObjectClone[questionName]?.rows[row]?.columns[column]) {
+                            return;
+                        }
+                        aggregateSurveyObjectClone[questionName].rows[row].aggregateTotal++;
+                        aggregateSurveyObjectClone[questionName].rows[row].columns[column].raw++;
                     });
                     break;
             }
