@@ -68,6 +68,10 @@ export const generateAggregateSurveyObject = (options: AggregateOptions): any =>
 
     options.survey.pages.forEach((surveyPage, surveyPageIndex) => {
         surveyPage.elements.forEach((surveyQuestion) => {
+            if (!Object.values(QuestionType)?.includes(surveyQuestion.type)) {
+                return;
+            }
+
             surveyObject[surveyQuestion.name] = {
                 type: surveyQuestion.type,
                 name: surveyQuestion.name,
@@ -272,7 +276,12 @@ export const populateAggregateSurveyObject = (aggregateSurveyObject: any, option
     return aggregateSurveyObjectClone;
 };
 
-// export const run = (options: AggregateOptions) => {
-//     const surveyObject = generateAggregateSurveyObject(options);
-//     const aggregateObject = populateAggregateSurveyObject(surveyObject, options);
-// };
+export const csv = () => {
+    
+}
+
+export const run = (options: AggregateOptions) => {
+    const surveyObject = generateAggregateSurveyObject(options);
+    const aggregateObject = populateAggregateSurveyObject(surveyObject, options);
+    return aggregateObject;
+};

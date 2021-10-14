@@ -6,6 +6,10 @@
                 {
                     "type":"text",
                     "name":"question1"
+                },
+                {
+                    "type": "invalid_question_type",
+                    "name": "Invalid Question Type"
                 }
             ]
         },
